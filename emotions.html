@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotional AI Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      padding: 30px;
+      text-align: center;
+    }
+    textarea {
+      width: 70%;
+      height: 100px;
+      font-size: 16px;
+      padding: 10px;
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🤖 Emotional AI Assistant</h1>
+  <p>Tell me how you're feeling or what's going on...</p>
+
+  <textarea id="userInput" placeholder="Type here..."></textarea><br>
+  <button onclick="analyzeEmotion()">Analyze Emotion</button>
+
+  <div class="result" id="emotionResult"></div>
+
+  <script>
+    function analyzeEmotion() {
+      const input = document.getElementById("userInput").value.toLowerCase();
+      const result = document.getElementById("emotionResult");
+
+      // Basic keywords-based sentiment check
+      const happyWords = ["happy", "great", "awesome", "excited", "joy", "love"];
+      const sadWords = ["sad", "depressed", "bad", "angry", "upset", "hate", "cry"];
+
+      let isHappy = happyWords.some(word => input.includes(word));
+      let isSad = sadWords.some(word => input.includes(word));
+
+      if (isHappy) {
+        result.innerHTML = "😊 You seem happy! Stay positive and keep focusing on yourself! 🌟";
+      } else if (isSad) {
+        result.innerHTML = "😢 It seems like you're feeling down. Try listening to music, talking to a friend, or going for a walk. You're not alone. 💖";
+      } else if (input.trim() === "") {
+        result.innerHTML = "⚠️ Please type something first!";
+      } else {
+        result.innerHTML = "😐 I'm not sure how you're feeling. But remember, every day is a new chance to feel better. 💫";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+   
